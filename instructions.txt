@@ -1,0 +1,79 @@
+PLEASE, DO NOT PAY ATTENTION TO THIS .TXT FILE. THIS IS JUST FOR MYSELF (NOT RELATED TO PROJECT)
+
+First install all packages.
+Create all important pages
+Fill webpack.config.js file
+Run "npm run build" in Git bash terminal
+
+ADDING NEW CSS PLUGIN FOR CREATING CSS FILE IN PUBLIC FOLDER
+1. import css file in all js files in js folder 
+2. From google search "MiniCssExtractPlugin" in webpack.js.org
+3. Enter site
+4. Run in terminal: "npm install --save-dev mini-css-extract-plugin"
+5. Firstly, write this config file inside module exports: 
+module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
+6. Then, write inside plugins: "new MiniCssExtractPlugin(),"
+7. After that, at the top, call this: "const MiniCssExtractPlugin = require("mini-css-extract-plugin");"
+8. Run: "npm run build"
+NOTE!: EVERY ASSETS OF CSS (IMAGEs, LOGOs, ICONs, etc.) MUST BE UPLOADED IN IMAGES FOLDER, UNLESS IT SHOWS ERROR
+
+
+OPTIMIZATION OF THE PROJECT:
+Now, in our project folder, there are many unnecessary items that ".git" folder holds
+There are derived with Git Bash, so we have to delete them before uploading project to GitHub
+For this, these steps should be taken: 
+1. Open project folder from "My PC"
+2. Show hidden files
+3. Delete ".git" folder
+4. From VScode, open newfile in the project with name of ".gitignore"
+5. Inside it write: "/node_modules" and save
+6. After all above, enter webpack.config.js and change this, "mode: 'production'"
+7. Next, from package.json file, change scripts' assets: ""build": "webpack --mode=production""
+8. To make sure everything is working, run: "npm run build"
+9. Then, we have to add "babel-loader" to our project which makes our project readable by many consoles
+10. Search "babel-loader for webpack" in google
+11. Enter webpack's website and copy "Usage" code
+12. Paste it inside rules in webpack.config.js (NOTE: the code need some alterations and look like this): 
+{
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+13. Create new file in project with name of: ".babelrc"
+14. Paste this code to the ".babelrc" file: 
+{
+  "presets": ["@babel/preset-env"]
+}
+15. Install babel package: "npm install -D babel-loader @babel/core @babel/preset-env webpack"
+16. Run in Git Bash: "npm run build"
+
+
+UPLOADING TO GitHub:
+1. If GitHub is not installed: (Install package extension of GitHub pull requests in VScode. 
+At the left taskbar, Tap github icon and tap sign-in button, so it redirects to official website. 
+So, sign in with "Connect VScode to GitHub"
+Verify username for Git Bash: git config --global user.name "Abdulaziz Saydaliev"
+Verify user email for Git Bash: git config --global user.email "abdulazizsaydaliev800@gmail.com")
+2. If GitHub installed: Open source control and tap "Initialize Repository" (Do not change anything after initialize)
+3. In source control, above "commit button" in left taskbar, write project's final name 
+4. Tap "Commit"
+5. Tap "Publish Branch"
+
+
+EDITING PROJECT WE UPLOADED TO OUR GitHub ACCOUNT:
+1. Enter the GitHub account that the project was uploaded to 
+2. Download project in zip format
+3. Unzip it and open with VScode
+4. Open Git Bash and run "npm i" (That will download and install all related "node_modules" packages)
